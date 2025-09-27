@@ -1,0 +1,174 @@
+:root{
+  --bg:#fafafa;
+  --card:#ffffff;
+  --text:#111;
+  --muted:#8e8e8e;
+  --border:#dbdbdb;
+  --brand:#0095f6;
+  --danger:#ed4956;
+  --success:#2ecc71;
+  --radius:12px;
+  --shadow: 0 6px 24px rgba(0,0,0,.06);
+}
+
+*{ box-sizing:border-box }
+html,body{ height:100% }
+body{
+  margin:0;
+  font: 15px/1.45 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:var(--text);
+  background:var(--bg);
+}
+
+/* Topbar */
+.topbar{
+  position:sticky; top:0; z-index:10;
+  background:#fff; border-bottom:1px solid var(--border);
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 16px;
+}
+.brand{
+  font-weight:800; letter-spacing:.3px; font-size:18px; cursor:pointer; color:var(--text);
+}
+.search-wrap{ flex:1; display:flex; justify-content:center; padding:0 12px }
+.search{
+  width:100%; max-width:380px; padding:8px 10px; border:1px solid var(--border); border-radius:8px; outline:none;
+  background:#fafafa; color:var(--text);
+}
+.top-actions{ display:flex; align-items:center; gap:8px }
+.btn{
+  appearance:none; border:none; cursor:pointer;
+  border-radius:999px; padding:8px 12px; font-weight:600; color:#fff; background:#2a2a2a;
+}
+.btn.small{ padding:6px 10px; font-size:12px }
+.btn.primary{ background:var(--brand) }
+.btn.ghost{ background:#fff; color:var(--text); border:1px solid var(--border) }
+.btn.danger{ background:#ff5a5f }
+.btn.success{ background:var(--success) }
+
+/* Layout */
+.layout{
+  max-width:1000px; margin:0 auto; padding:18px;
+  display:grid; grid-template-columns: 320px 1fr; gap:18px;
+}
+.sidebar{ display:flex; flex-direction:column; gap:18px }
+.panel{
+  background:var(--card); border:1px solid var(--border);
+  border-radius:10px; padding:12px; box-shadow:var(--shadow);
+}
+.panel.muted{ background:#fff }
+.panel-header{ display:flex; align-items:center; justify-content:space-between }
+.user-list{ list-style:none; margin:10px 0 0; padding:0; display:flex; flex-direction:column; gap:10px }
+.user-item{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+}
+.user-meta{ display:flex; align-items:center; gap:10px; cursor:pointer }
+.user-name{ font-weight:700 }
+.username{ color:var(--muted); font-size:12px }
+
+/* Avatars */
+.avatar{
+  width:40px; height:40px; border-radius:50%;
+  display:grid; place-items:center; font-weight:800; color:#fff; background:#bbb;
+  text-transform:uppercase;
+}
+.avatar.tiny{ width:30px; height:30px; font-size:12px }
+
+/* Feed & Post */
+.feed{ display:flex; flex-direction:column; gap:14px }
+.card{ background:#fff; border:1px solid var(--border); border-radius:8px; box-shadow:var(--shadow) }
+.post{ border-radius:8px; overflow:hidden }
+.post-head{ display:flex; gap:10px; align-items:center; padding:10px }
+.post-author{ font-weight:700; cursor:pointer }
+.post-username{ color:var(--muted); margin-left:6px; font-weight:500; font-size:12px }
+
+.post-media{ position:relative; background:#000 }
+.post-media img{ width:100%; display:block; object-fit:cover }
+.heart-overlay{
+  pointer-events:none;
+  position:absolute; inset:0; display:grid; place-items:center; opacity:0;
+  transition:opacity .2s ease;
+}
+.heart-overlay svg{
+  transform: scale(.1); opacity:0;
+  animation: none;
+}
+.heart-overlay.pop{ opacity:1 }
+.heart-overlay.pop svg{
+  animation: pop 700ms ease forwards;
+}
+@keyframes pop{
+  0% { transform: scale(.2); opacity:0 }
+  25% { transform: scale(1.2); opacity:1 }
+  55% { transform: scale(1.0); opacity:1 }
+  100% { transform: scale(.8); opacity:0 }
+}
+
+.post-actions{
+  display:flex; align-items:center; gap:8px; padding:8px 10px; border-top:1px solid var(--border);
+}
+.icon-btn{
+  background:transparent; border:none; cursor:pointer; padding:6px; display:inline-flex; align-items:center; gap:6px;
+}
+.icon-btn .count{ color:var(--muted); font-size:13px }
+.icon-heart{ width:24px; height:24px; fill:none; stroke:#222; stroke-width:2 }
+.icon-heart.liked{ fill:var(--danger); stroke:var(--danger) }
+.icon-comment{ width:24px; height:24px; fill:none; stroke:#222; stroke-width:2 }
+
+.post-meta{ padding:0 10px 10px }
+.likes{ font-weight:700; margin:6px 0 }
+.caption{ margin:4px 0 }
+.caption b{ cursor:pointer }
+.time{ color:var(--muted); font-size:12px; margin-top:6px; text-transform:uppercase }
+
+.comment-list{ padding:0 10px 10px; display:flex; flex-direction:column; gap:8px }
+.view-all{ color:#555; font-weight:600; cursor:pointer; font-size:14px }
+.comment{ display:flex; gap:6px }
+.comment b{ cursor:pointer }
+.comment-form{
+  border-top:1px solid var(--border); display:flex; gap:8px; padding:8px 10px;
+}
+.comment-form input{
+  flex:1; border:1px solid var(--border); border-radius:999px; padding:8px 12px; outline:none;
+}
+
+/* Composer */
+.composer{ padding:10px }
+.composer .row{ display:flex; gap:10px; align-items:center }
+.composer .preview{
+  margin-top:10px; display:none; position:relative; border:1px solid var(--border); border-radius:8px; overflow:hidden
+}
+.composer .preview img{ width:100%; display:block; object-fit:cover; max-height:380px }
+.composer .remove-preview{
+  position:absolute; top:8px; right:8px; background:#fff; border:1px solid var(--border); border-radius:999px; padding:4px 8px; cursor:pointer;
+}
+
+/* Profile */
+.profile-header{
+  background:#fff; border:1px solid var(--border); border-radius:8px; padding:14px; display:flex; gap:16px; align-items:center;
+}
+.profile-name{ font-weight:800; font-size:20px }
+.profile-username{ color:var(--muted); margin-left:8px }
+.stats{ display:flex; gap:16px; margin-top:6px; color:#333 }
+.bio{ margin-top:6px; color:#333 }
+
+.profile-actions{ margin-left:auto }
+.grid{
+  margin-top:12px;
+  display:grid; grid-template-columns: repeat(3, 1fr); gap:6px;
+}
+.grid .tile{
+  position:relative; width:100%; aspect-ratio:1/1; overflow:hidden; border-radius:6px; cursor:pointer; border:1px solid var(--border);
+}
+.grid .tile img{ width:100%; height:100%; object-fit:cover; display:block }
+
+.hidden{ display:none !important }
+
+.footer{ text-align:center; color:#888; padding:18px }
+
+/* Responsive */
+@media (max-width: 900px){
+  .layout{ grid-template-columns: 1fr; }
+  .sidebar{ order:2 }
+  .content{ order:1 }
+}

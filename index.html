@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ESRA</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand" id="navHome" role="button" tabindex="0">ESRA</div>
+    <div class="search-wrap">
+      <input id="userSearch" class="search" placeholder="Search users..." />
+    </div>
+    <nav class="top-actions" id="authArea"></nav>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <div class="panel">
+        <div class="panel-header">
+          <h3>Suggestions</h3>
+        </div>
+        <ul id="userList" class="user-list"></ul>
+      </div>
+      <div class="panel muted">
+        <p class="small">Your data not show any one... Your privacy our responsibility</p>
+      </div>
+    </aside>
+
+    <section class="content">
+      <div id="view-feed"></div>
+      <div id="view-profile" class="hidden"></div>
+    </section>
+  </main>
+
+  <footer class="footer">Make your content with ESRA</footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
